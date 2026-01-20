@@ -34,10 +34,14 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
+      - name: Build frontend
+        run: npm run build
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2"
+
       - name: Build Tauri app (Universal macOS)
-        uses: tauri-apps/tauri-action@v0
-        with:
-          args: --target universal-apple-darwin
+        run: cargo tauri build --target universal-apple-darwin
 
       - name: Get version from Cargo.toml
         id: get_version
