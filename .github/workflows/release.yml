@@ -26,11 +26,18 @@ jobs:
         with:
           targets: aarch64-apple-darwin,x86_64-apple-darwin
 
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
       - name: Install frontend dependencies
         run: npm ci
 
       - name: Build Tauri app (Universal macOS)
-        run: npx tauri build --target universal-apple-darwin
+        uses: tauri-apps/tauri-action@v0
+        with:
+          args: --target universal-apple-darwin
 
       - name: Get version from Cargo.toml
         id: get_version
