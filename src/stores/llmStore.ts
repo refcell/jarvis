@@ -10,7 +10,7 @@ interface LLMState {
   // Actions
   setConfig: (config: LLMConfig) => void;
   setDetectedTools: (tools: DetectedCLITools) => void;
-  setHealthy: (healthy: boolean) => void;
+  setHealthy: (healthy: boolean | null) => void;
   setChecking: (checking: boolean) => void;
   updateProvider: (providerType: LLMProviderType) => void;
 }

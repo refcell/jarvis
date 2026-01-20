@@ -37,8 +37,26 @@ export function useSettings() {
   const toggleNotifications = useMutation({
     mutationFn: async (enabled: boolean) => {
       await settingsService.toggleNotifications(enabled);
+      return enabled;
     },
-    onSuccess: () => {
+    onMutate: async (enabled: boolean) => {
+      // Cancel any outgoing refetches
+      await queryClient.cancelQueries({ queryKey: ['settings'] });
+      // Optimistically update the store
+      const previousSettings = settingsQuery.data;
+      if (previousSettings) {
+        const updated = { ...previousSettings, notifications_enabled: enabled };
+        setSettings(updated);
+      }
+      return { previousSettings };
+    },
+    onError: (_err, _enabled, context) => {
+      // Rollback on error
+      if (context?.previousSettings) {
+        setSettings(context.previousSettings);
+      }
+    },
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['settings'] });
     },
   });

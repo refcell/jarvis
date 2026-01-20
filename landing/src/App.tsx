@@ -1,8 +1,8 @@
 import { Download, Eye, Brain, CheckSquare, Apple } from 'lucide-react'
 import './App.css'
 
-const GITHUB_RELEASE_URL = 'https://github.com/refcell/jarvis/releases/latest/download/Jarvis_0.1.0_aarch64.dmg'
-const VERSION = '0.1.0'
+const GITHUB_RELEASE_URL = 'https://github.com/refcell/jarvis/releases/latest'
+const VERSION = '0.1.1'
 
 function App() {
   return (

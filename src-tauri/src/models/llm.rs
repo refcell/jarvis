@@ -23,6 +23,16 @@ impl LLMProviderType {
             LLMProviderType::Custom => "custom",
         }
     }
+
+    /// Returns true if this provider is a CLI tool that doesn't require an API key
+    pub fn is_cli_provider(&self) -> bool {
+        matches!(self, LLMProviderType::ClaudeCLI | LLMProviderType::CbcodeCLI)
+    }
+
+    /// Returns true if this provider requires an API key
+    pub fn requires_api_key(&self) -> bool {
+        matches!(self, LLMProviderType::Anthropic | LLMProviderType::OpenAI)
+    }
 }
 
 /// Configuration for an LLM provider

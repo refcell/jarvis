@@ -21,6 +21,7 @@ export function LLMProviderConfig() {
     isCheckingHealth,
     isHealthy,
     healthCheck,
+    resetHealthCheck,
     updateConfig,
     storeApiKey,
     hasApiKey,
@@ -36,6 +37,11 @@ export function LLMProviderConfig() {
       if (config.endpoint) setEndpoint(config.endpoint);
     }
   }, [config]);
+
+  // Reset health check status when provider changes
+  useEffect(() => {
+    resetHealthCheck();
+  }, [selectedProvider, resetHealthCheck]);
 
   const currentProviderOption = providerOptions.find((p) => p.value === selectedProvider);
   const requiresApiKey = currentProviderOption?.requiresKey ?? false;

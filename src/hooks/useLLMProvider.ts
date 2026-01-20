@@ -85,6 +85,7 @@ export function useLLMProvider() {
     healthCheck: healthCheck.mutate,
     isCheckingHealth: healthCheck.isPending,
     isHealthy: healthCheck.data,
+    resetHealthCheck: () => setHealthy(null),
     updateConfig: updateConfig.mutate,
     isUpdatingConfig: updateConfig.isPending,
     storeApiKey: storeApiKey.mutate,

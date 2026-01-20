@@ -1,6 +1,6 @@
 [package]
 name = "jarvis"
-version = "0.1.0"
+version = "0.1.1"
 description = "A macOS desktop app that watches the screen, feeds context to an LLM, detects actionable tasks, and displays them in a prioritized dashboard."
 authors = ["refcell"]
 edition = "2021"

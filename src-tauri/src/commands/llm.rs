@@ -16,9 +16,13 @@ pub async fn analyze_context(
 ) -> Result<Vec<DetectedTask>, String> {
     let settings = state.get_settings().map_err(|e| e.to_string())?;
 
-    // Get API key if needed
-    let api_key = KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
-        .map_err(|e| e.to_string())?;
+    // CLI providers don't need API keys
+    let api_key = if settings.llm_config.provider_type.is_cli_provider() {
+        None
+    } else {
+        KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
+            .map_err(|e| e.to_string())?
+    };
 
     let llm_service =
         LLMService::new(&settings.llm_config, api_key).map_err(|e| e.to_string())?;
@@ -36,9 +40,13 @@ pub async fn analyze_and_create_tasks(
 ) -> Result<Vec<crate::models::Task>, String> {
     let settings = state.get_settings().map_err(|e| e.to_string())?;
 
-    // Get API key if needed
-    let api_key = KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
-        .map_err(|e| e.to_string())?;
+    // CLI providers don't need API keys
+    let api_key = if settings.llm_config.provider_type.is_cli_provider() {
+        None
+    } else {
+        KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
+            .map_err(|e| e.to_string())?
+    };
 
     let llm_service =
         LLMService::new(&settings.llm_config, api_key).map_err(|e| e.to_string())?;
@@ -72,8 +80,13 @@ pub async fn analyze_and_create_tasks(
 pub async fn health_check_llm(state: State<'_, AppState>) -> Result<bool, String> {
     let settings = state.get_settings().map_err(|e| e.to_string())?;
 
-    let api_key = KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
-        .map_err(|e| e.to_string())?;
+    // CLI providers don't need API keys
+    let api_key = if settings.llm_config.provider_type.is_cli_provider() {
+        None
+    } else {
+        KeychainManager::get_api_key(settings.llm_config.provider_type.as_str())
+            .map_err(|e| e.to_string())?
+    };
 
     let llm_service =
         LLMService::new(&settings.llm_config, api_key).map_err(|e| e.to_string())?;
