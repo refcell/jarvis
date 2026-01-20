@@ -1,0 +1,63 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  position: relative;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.icon.active {
+  color: var(--accent-success);
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.capturing {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--accent-primary);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

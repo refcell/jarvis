@@ -1,0 +1,58 @@
+.header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+}
+
+.statValue {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.statDivider {
+  color: var(--text-tertiary);
+}
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

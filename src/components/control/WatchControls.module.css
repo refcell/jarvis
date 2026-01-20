@@ -1,0 +1,32 @@
+.permission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: var(--accent-primary);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+}

@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.actions {
+  margin-top: var(--spacing-lg);
+}

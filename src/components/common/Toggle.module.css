@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+}
+
+.container.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  color: var(--text-primary);
+  font-size: var(--font-size-md);
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.toggle:disabled {
+  cursor: not-allowed;
+}
+
+.toggle.checked {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--text-primary);
+  border-radius: 50%;
+}
