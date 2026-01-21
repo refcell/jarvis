@@ -34,10 +34,14 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
-      - name: Build frontend
+      - name: Debug - Check node_modules
         run: |
-          export PATH="$(npm bin):$PATH"
-          npm run build
+          ls -la node_modules/.bin/ | head -20
+          which npm
+          npm --version
+
+      - name: Build frontend
+        run: node node_modules/vite/bin/vite.js build
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
