@@ -31,10 +31,10 @@ jobs:
           workspaces: './src-tauri -> target'
 
       - name: Install frontend dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install
 
       - name: Build frontend
-        run: npm run build
+        run: yarn build
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
