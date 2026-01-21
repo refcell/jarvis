@@ -18,8 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '18'
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
@@ -32,16 +31,10 @@ jobs:
           workspaces: './src-tauri -> target'
 
       - name: Install frontend dependencies
-        run: npm ci
-
-      - name: Debug - Check node_modules
-        run: |
-          ls -la node_modules/.bin/ | head -20
-          which npm
-          npm --version
+        run: npm install --legacy-peer-deps
 
       - name: Build frontend
-        run: node node_modules/vite/bin/vite.js build
+        run: npm run build
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
