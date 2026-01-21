@@ -35,7 +35,9 @@ jobs:
         run: npm ci
 
       - name: Build frontend
-        run: npm run build
+        run: |
+          export PATH="$(npm bin):$PATH"
+          npm run build
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
