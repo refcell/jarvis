@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import * as llmService from '../services/llm';
 import * as keychainService from '../services/keychain';
@@ -77,6 +78,10 @@ export function useLLMProvider() {
     enabled: !!configQuery.data,
   });
 
+  const resetHealthCheck = useCallback(() => {
+    setHealthy(null);
+  }, [setHealthy]);
+
   return {
     config: configQuery.data,
     isLoadingConfig: configQuery.isLoading,
@@ -85,7 +90,7 @@ export function useLLMProvider() {
     healthCheck: healthCheck.mutate,
     isCheckingHealth: healthCheck.isPending,
     isHealthy: healthCheck.data,
-    resetHealthCheck: () => setHealthy(null),
+    resetHealthCheck,
     updateConfig: updateConfig.mutate,
     isUpdatingConfig: updateConfig.isPending,
     storeApiKey: storeApiKey.mutate,

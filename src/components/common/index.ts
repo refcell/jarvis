@@ -4,3 +4,4 @@ export { Toggle } from './Toggle';
 export { Badge } from './Badge';
 export { Input } from './Input';
 export { Spinner } from './Spinner';
+export { ErrorBoundary } from './ErrorBoundary';
