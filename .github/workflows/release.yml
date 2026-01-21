@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
@@ -34,7 +34,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build frontend
-        run: ./node_modules/.bin/vite build
+        run: npm run build
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
